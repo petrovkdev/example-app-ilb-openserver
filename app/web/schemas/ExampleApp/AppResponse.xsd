@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema  elementFormDefault="qualified"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="urn:ru:ilb:ExampleApp:AppResponse"
+             targetNamespace="urn:ru:ilb:ExampleApp:AppResponse">
+    <xsd:element name="AppResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="phpversion" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="dbconnect" type="xsd:boolean" minOccurs="0"/>
+                <xsd:element name="foo" type="xsd:integer" minOccurs="0"/>
+                <xsd:element name="carMarka" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="car">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="marka" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="foo1" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="foo2" type="xsd:string" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

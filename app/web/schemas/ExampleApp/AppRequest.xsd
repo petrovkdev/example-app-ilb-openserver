@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema  elementFormDefault="qualified"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="urn:ru:ilb:ExampleApp:AppRequest"
+             targetNamespace="urn:ru:ilb:ExampleApp:AppRequest">
+    <xsd:element name="AppRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="foo" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
