@@ -14,6 +14,12 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
      */
     protected $Foo = null;
 
+    /**
+     * @maxOccurs 1 .
+     * @var \String
+     */
+    protected $Execute = null;
+
     public function __construct() {
         parent::__construct();
         $this->_properties["foo"] = array(
@@ -21,6 +27,12 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
             "ns" => "",
             "minOccurs" => 0,
             "text" => $this->Foo
+        );
+        $this->_properties["execute"] = array(
+            "prop" => "Execute",
+            "ns" => "",
+            "minOccurs" => 0,
+            "text" => $this->Execute
         );
     }
 
@@ -34,10 +46,26 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
     }
 
     /**
+     * @param \String $val
+     */
+    public function setExecute($val) {
+        $this->Execute = $val;
+        $this->_properties["execute"]["text"] = $val;
+        return $this;
+    }
+
+    /**
      * @return \String
      */
     public function getFoo() {
         return $this->Foo;
+    }
+
+    /**
+     * @return \String
+     */
+    public function getExecute() {
+        return $this->Execute;
     }
 
     public function toXmlStr($xmlns = self::NS, $xmlname = self::ROOT) {
@@ -84,6 +112,10 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
         if ($prop !== NULL) {
             $xw->writeElement('foo', $prop);
         }
+        $prop = $this->getExecute();
+        if ($prop !== NULL) {
+            $xw->writeElement('execute', $prop);
+        }
     }
 
     /**
@@ -102,6 +134,9 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
         switch ($xr->localName) {
             case "foo":
                 $this->setFoo($xr->readString());
+                break;
+            case "execute":
+                $this->setExecute($xr->readString());
                 break;
             default:
                 parent::elementsFromXmlReader($xr);
@@ -127,6 +162,9 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
         if (isset($props["foo"])) {
             $this->setFoo($props["foo"]);
         }
+        if (isset($props["execute"])) {
+            $this->setExecute($props["execute"]);
+        }
     }
 
     /**
@@ -138,6 +176,9 @@ class AppRequest extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType 
     public function fromArray($row) {
         if (isset($row["foo"])) {
             $this->setFoo($row["foo"]);
+        }
+        if (isset($row["execute"])) {
+            $this->setExecute($row["execute"]);
         }
     }
 

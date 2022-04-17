@@ -53,7 +53,7 @@
                                     <div class="text-sm text-gray-900">username=root</div>
                                     <div class="text-sm text-gray-900">password=123456</div>
                                     <div class="text-sm text-gray-900">
-                                        <a href="localhost:8081" target="_blank" class="text-green-600 underline" title="Администрирование MySql">Перейти в Adminer Editor</a>
+                                        <a href="http://localhost:8081" target="_blank" class="text-green-600 underline" title="Администрирование MySql">Перейти в Adminer Editor</a>
                                     </div>
                                 </td>
 
@@ -70,16 +70,6 @@
                                             </span>
                                         </xsl:otherwise>
                                     </xsl:choose>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <xsl:value-of select="x:foo"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    Марка авто - <xsl:value-of select="x:carMarka"/>
                                 </td>
                             </tr>
                         </tbody>

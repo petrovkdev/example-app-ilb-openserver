@@ -16,15 +16,12 @@ try {
 
 $data = [
     'phpversion' => phpversion(),
-    'foo' => 123,
     'dbconnect' => isset($db)
 ];
 
 $AppResponse = new ru\ilb\ExampleApp\AppResponse();
 
 $AppResponse->fromArray($data);
-
-//trigger_error(print_r($AppResponse, 1));
 
 $xw = new XMLWriter();
 $xw->openMemory();
@@ -40,26 +37,6 @@ $xw->writePi("xml-stylesheet", 'type="text/xsl" href="stylesheets/app.xsl"');
 //$xw->startElementNs(NULL, "AppResponse", "urn:ru:ilb:ExampleApp:AppResponse");
 $xw->writeAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 $xw->writeAttribute("xsi:schemaLocation", "urn:ru:ilb:ExampleApp:AppResponse schemas/ExampleApp/AppResponse.xsd");
-
-//$xw->writeElement('phpversion', phpversion());
-
-//if (isset($db)) {
-    //$xw->writeElement('dbconnect', true);
-//}
-
-//$xw->writeElement('foo', 1234);
-
-$car = [];
-
-print_r($car);
-
-$Car = new ru\ilb\ExampleApp\AppResponse\Car();
-
-$Car->fromArray($car);
-
-$AppResponse->setCarMarka('Лада Веста');
-
-$AppResponse->setCar($Car);
 
 $AppResponse->toXmlWriter($xw);
 

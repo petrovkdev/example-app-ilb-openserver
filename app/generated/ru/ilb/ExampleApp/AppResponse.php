@@ -30,13 +30,13 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
      * @maxOccurs 1 .
      * @var \String
      */
-    protected $CarMarka = null;
+    protected $Result = null;
 
     /**
      * @maxOccurs 1 .
-     * @var ru\ilb\ExampleApp\AppResponse\Car
+     * @var \String
      */
-    protected $Car = null;
+    protected $WaitText = null;
 
     public function __construct() {
         parent::__construct();
@@ -58,17 +58,17 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
             "minOccurs" => 0,
             "text" => $this->Foo
         );
-        $this->_properties["carMarka"] = array(
-            "prop" => "CarMarka",
+        $this->_properties["result"] = array(
+            "prop" => "Result",
             "ns" => "",
             "minOccurs" => 0,
-            "text" => $this->CarMarka
+            "text" => $this->Result
         );
-        $this->_properties["car"] = array(
-            "prop" => "Car",
+        $this->_properties["waitText"] = array(
+            "prop" => "WaitText",
             "ns" => "",
-            "minOccurs" => 1,
-            "text" => $this->Car
+            "minOccurs" => 0,
+            "text" => $this->WaitText
         );
     }
 
@@ -102,18 +102,18 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
     /**
      * @param \String $val
      */
-    public function setCarMarka($val) {
-        $this->CarMarka = $val;
-        $this->_properties["carMarka"]["text"] = $val;
+    public function setResult($val) {
+        $this->Result = $val;
+        $this->_properties["result"]["text"] = $val;
         return $this;
     }
 
     /**
-     * @param ru\ilb\ExampleApp\AppResponse\Car $val
+     * @param \String $val
      */
-    public function setCar(\ru\ilb\ExampleApp\AppResponse\Car $val) {
-        $this->Car = $val;
-        $this->_properties["car"]["text"] = $val;
+    public function setWaitText($val) {
+        $this->WaitText = $val;
+        $this->_properties["waitText"]["text"] = $val;
         return $this;
     }
 
@@ -141,15 +141,15 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
     /**
      * @return \String
      */
-    public function getCarMarka() {
-        return $this->CarMarka;
+    public function getResult() {
+        return $this->Result;
     }
 
     /**
-     * @return ru\ilb\ExampleApp\AppResponse\Car
+     * @return \String
      */
-    public function getCar() {
-        return $this->Car;
+    public function getWaitText() {
+        return $this->WaitText;
     }
 
     public function toXmlStr($xmlns = self::NS, $xmlname = self::ROOT) {
@@ -204,13 +204,13 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
         if ($prop !== NULL) {
             $xw->writeElement('foo', $prop);
         }
-        $prop = $this->getCarMarka();
+        $prop = $this->getResult();
         if ($prop !== NULL) {
-            $xw->writeElement('carMarka', $prop);
+            $xw->writeElement('result', $prop);
         }
-        $prop = $this->getCar();
+        $prop = $this->getWaitText();
         if ($prop !== NULL) {
-            $prop->toXmlWriter($xw);
+            $xw->writeElement('waitText', $prop);
         }
     }
 
@@ -237,12 +237,11 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
             case "foo":
                 $this->setFoo($xr->readString());
                 break;
-            case "carMarka":
-                $this->setCarMarka($xr->readString());
+            case "result":
+                $this->setResult($xr->readString());
                 break;
-            case "car":
-                $Car = \Adaptor_Bindings::create("\\ru\\ilb\\ExampleApp\\AppResponse\\Car");
-                $this->setCar($Car->fromXmlReader($xr));
+            case "waitText":
+                $this->setWaitText($xr->readString());
                 break;
             default:
                 parent::elementsFromXmlReader($xr);
@@ -274,13 +273,11 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
         if (isset($props["foo"])) {
             $this->setFoo($props["foo"]);
         }
-        if (isset($props["carMarka"])) {
-            $this->setCarMarka($props["carMarka"]);
+        if (isset($props["result"])) {
+            $this->setResult($props["result"]);
         }
-        if (isset($props["car"])) {
-            $Car = \Adaptor_Bindings::create("\\ru\\ilb\\ExampleApp\\AppResponse\\Car");
-            $Car->fromJSON($props["car"]);
-            $this->setCar($Car);
+        if (isset($props["waitText"])) {
+            $this->setWaitText($props["waitText"]);
         }
     }
 
@@ -300,13 +297,11 @@ class AppResponse extends \Happymeal\Port\Adaptor\Data\XML\Schema\AnyComplexType
         if (isset($row["foo"])) {
             $this->setFoo($row["foo"]);
         }
-        if (isset($row["carMarka"])) {
-            $this->setCarMarka($row["carMarka"]);
+        if (isset($row["result"])) {
+            $this->setResult($row["result"]);
         }
-        if (isset($row["car"])) {
-            $Car = \Adaptor_Bindings::create("\\ru\\ilb\\ExampleApp\\AppResponse\\Car");
-            $Car->fromArray($row["car"]);
-            $this->setCar($Car);
+        if (isset($row["waitText"])) {
+            $this->setWaitText($row["waitText"]);
         }
     }
 
